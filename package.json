@@ -1,0 +1,70 @@
+{
+    "name": "facade-infrastructure-node",
+    "version": "1.0.0",
+    "author": "Conceptual Vision Consulting LLC",
+    "description": "Facade operations for infrastructure Pip.Services in Node.js / ES2017",
+    "contributors": [
+        {
+            "name": "Sergey Seroukhov",
+            "email": "seroukhov@gmail.com"
+        }
+    ],
+    "main": "./obj/src/index.js",
+    "typings": "./obj/src/index.d.ts",
+    "keywords": [
+        "pip.services",
+        "infrastructure",
+        "rest api",
+        "client facade"
+    ],
+    "noAnalyze": true,
+    "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com:pip-services-infrastructure2/facade-infrastructure-node.git"
+    },
+    "license": "Commercial",
+    "engines": {
+        "node": ">=14.0.0"
+    },
+    "private": true,
+    "scripts": {
+        "start": "node app",
+        "test": "mocha -t 10000 -R spec -u tdd --recursive ./obj/test",
+        "benchmark": "matcha -R clean -I tdd ./benchmark/run.js"
+    },
+    "dependencies": {
+        "busboy": "*",
+        "client-blobs-node": "^1.0.*",
+        "client-email-node": "^1.0.*",
+        "client-eventlog-node": "^1.0.*",
+        "client-facets-node": "^1.0.*",
+        "client-logging-node": "^1.0.*",
+        "client-perfmon-node": "^1.0.*",
+        "client-settings-node": "^1.0.*",
+        "client-sms-node": "^1.0.*",
+        "client-statistics-node": "^1.0.*",
+        "google-protobuf": "^3.20.1",
+        "pip-services3-commons-nodex": "^1.0.*",
+        "pip-services3-components-nodex": "^1.4.*",
+        "pip-services3-container-nodex": "^1.0.*",
+        "pip-services3-rpc-nodex": "^1.2.*"
+    },
+    "devDependencies": {
+        "@types/chai": "*",
+        "@types/mocha": "*",
+        "@types/node": "*",
+        "chai": "*",
+        "matcha": "*",
+        "mocha": "*",
+        "restify": "4.3.0",
+        "service-blobs-node": "^1.0.*",
+        "service-email-node": "^1.0.*",
+        "service-eventlog-node": "^1.0.*",
+        "service-facets-node": "^1.0.*",
+        "service-logging-node": "^1.0.*",
+        "service-perfmon-node": "^1.0.*",
+        "service-settings-node": "^1.0.*",
+        "service-sms-node": "^1.0.*",
+        "service-statistics-node": "^1.0.*"
+    }
+}

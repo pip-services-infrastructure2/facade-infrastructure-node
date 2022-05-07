@@ -1,0 +1,112 @@
+---
+# Container info
+- descriptor: "pip-services:context-info:default:default:1.0"
+  name: "pip-vault-us1-alpha"
+  description: "Client facade for Pip.Vault US1"
+
+# Console logger
+- descriptor: "pip-services:logger:console:default:1.0"
+  level: trace
+
+# Service logger
+- descriptor: "service-logging:logger:direct:default:*"
+  level: trace
+
+# Log counters
+- descriptor: "pip-services:counters:log:default:*"
+
+# Service counters
+- descriptor: "service-perfmon:counters:direct:default:*"
+  level: trace
+
+# Discovery service
+- descriptor: "pip-services:discovery:memory:default:*"
+  mongodb: uri=mongodb://localhost/test
+
+# Credential store
+- descriptor: "pip-services:credential-store:memory:default:*"
+  mongodb: username=;password=
+
+############## Infrastructure components ##############
+
+# Logging components
+- descriptor: "service-logging:persistence-messages:memory:default:*"
+- descriptor: "service-logging:persistence-errors:memory:default:*"
+- descriptor: "service-logging:controller:default:default:*"
+- descriptor: "service-logging:client:direct:default:*"
+
+# Logging counters
+- descriptor: "service-perfmon:persistence:memory:default:*"
+- descriptor: "service-perfmon:controller:default:default:*"
+- descriptor: "service-perfmon:client:direct:default:*"
+
+# Event Log components
+- descriptor: "service-eventlog:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "service-eventlog:controller:default:default:*"
+- descriptor: "service-eventlog:client:direct:default:*"
+
+# Statistics components
+- descriptor: "service-statistics:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "service-statistics:controller:default:default:*"
+- descriptor: "service-statistics:client:direct:default:*"
+
+# Settings components
+- descriptor: "service-settings:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "service-settings:controller:default:default:*"
+- descriptor: "service-settings:client:direct:default:*"
+
+# Facets components
+- descriptor: "service-facets:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "service-facets:controller:default:default:*"
+- descriptor: "service-facets:client:direct:default:*"
+
+# Blobs components
+- descriptor: "service-blobs:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "service-blobs:controller:default:default:*"
+- descriptor: "service-blobs:client:direct:default:*"
+
+# Email components
+- descriptor: "service-email:controller:default:default:*"
+- descriptor: "service-email:client:direct:default:*"
+
+# Sms components
+- descriptor: "service-sms:controller:default:default:*"
+- descriptor: "service-sms:client:direct:default:*"
+
+################ REST API Routes ##############
+
+# Main facade service
+- descriptor: "facade-infrastructure:service:main:default:*"
+  root_path: ""
+  connection:
+    protocol: "http"
+    host: "0.0.0.0"
+    port: 8080
+  options:
+    debug: true
+    maintenance_enabled: false
+    max_req_size: "1mb"
+
+# Version 1 facade service
+- descriptor: "facade-infrastructure:service:test:api-1.0:*"
+  root_path: "v1"
+
+# Pip.Services Operations
+- descriptor: "facade-infrastructure:operations:logging:default:1.0"
+- descriptor: "facade-infrastructure:operations:counters:default:1.0"
+- descriptor: "facade-infrastructure:operations:eventlog:default:1.0"
+- descriptor: "facade-infrastructure:operations:settings:default:1.0"
+- descriptor: "facade-infrastructure:operations:statistics:default:1.0"
+- descriptor: "facade-infrastructure:operations:blobs:default:1.0"
+- descriptor: "facade-infrastructure:operations:email:default:1.0"
+- descriptor: "facade-infrastructure:operations:sms:default:1.0"
