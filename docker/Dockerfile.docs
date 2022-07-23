@@ -1,14 +1,10 @@
-FROM node:14-alpine
-
-# Configure npm
-RUN npm set progress=false && npm config set depth 0
-
-# Install git and ssh
-RUN apk update && apk add git && apk add openssh
+FROM node:14
 
 # Set working directory
 WORKDIR /app
 
+# Configure npm
+RUN npm set progress=false && npm config set depth 0
 RUN npm -g config set user root 
 
 # Install dependencies
@@ -18,7 +14,7 @@ RUN npm install typescript@3.6.2 \
     && npm install js-yaml@3.12.0 \
     && npm install typedoc@0.11.1 \
     && npm install git+https://github.com/hobbyguy77/typedoc-plugin-external-module-name.git
-    
+
 # copy the entire project
 COPY . .
 
