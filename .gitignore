@@ -4,5 +4,6 @@
 /error.log
 /obj/test
 /config/config.yml
+/package-lock.json
 /docker/id_rsa*
-package-lock.json
+/docker/.npmrc
