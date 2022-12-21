@@ -97,7 +97,7 @@ Alternatively to manual instantiation and cross-referencing you can use Pip.Serv
 and instantiate the whole facade using simple configuration:
 ```yaml
 ---
--descriptor: service-logging:client:http:default:1.0
+-descriptor: service-logging:client:commandable-http:default:1.0
  connection:
    protocol: http
    host: localhost
